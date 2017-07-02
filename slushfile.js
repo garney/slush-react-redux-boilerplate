@@ -1,21 +1,21 @@
 /*
- * slush-slush-react-redux-boilerplate
- * https://github.com/garney/slush-slush-react-redux-boilerplate
+ * slush-webpack-angularity
+ * https://github.com/garney/slush-webpack-angularity
  *
- * Copyright (c) 2017, Garney Andres
+ * Copyright (c) 2016, garney
  * Licensed under the MIT license.
  */
 
 'use strict';
 
 var gulp = require('gulp'),
-    install = require('gulp-install'),
-    conflict = require('gulp-conflict'),
-    template = require('gulp-template'),
-    rename = require('gulp-rename'),
-    _ = require('underscore.string'),
-    inquirer = require('inquirer'),
-    path = require('path');
+  install = require('gulp-install'),
+  conflict = require('gulp-conflict'),
+  template = require('gulp-template'),
+  rename = require('gulp-rename'),
+  _ = require('underscore.string'),
+  inquirer = require('inquirer'),
+  path = require('path');
 
 function format(string) {
     var username = string.toLowerCase();
@@ -61,19 +61,11 @@ gulp.task('default', function (done) {
     }, {
         name: 'appVersion',
         message: 'What is the version of your project?',
-        default: '0.1.0'
+        default: '0.0.1'
     }, {
         name: 'authorName',
         message: 'What is the author name?',
         default: defaults.authorName
-    }, {
-        name: 'authorEmail',
-        message: 'What is the author email?',
-        default: defaults.authorEmail
-    }, {
-        name: 'userName',
-        message: 'What is the github username?',
-        default: defaults.userName
     }, {
         type: 'confirm',
         name: 'moveon',
@@ -81,23 +73,23 @@ gulp.task('default', function (done) {
     }];
     //Ask
     inquirer.prompt(prompts,
-        function (answers) {
-            if (!answers.moveon) {
-                return done();
-            }
-            answers.appNameSlug = _.slugify(answers.appName);
-            gulp.src(__dirname + '/templates/**')
-                .pipe(template(answers))
-                .pipe(rename(function (file) {
-                    if (file.basename[0] === '_') {
-                        file.basename = '.' + file.basename.slice(1);
-                    }
-                }))
-                .pipe(conflict('./'))
-                .pipe(gulp.dest('./'))
-                .pipe(install())
-                .on('end', function () {
-                    done();
-                });
-        });
+      function (answers) {
+          if (!answers.moveon) {
+              return done();
+          }
+          answers.appNameSlug = _.slugify(answers.appName);
+
+          gulp.src(__dirname + '/templates/**',  {dot: true})
+            .pipe(template(answers))
+            .pipe(rename(function (file) {
+                if (file.basename[0] === '_') {
+                    file.basename = '.' + file.basename.slice(1);
+                }
+            }))
+            .pipe(gulp.dest('./'))
+            .pipe(install())
+            .on('end', function () {
+                done();
+            });
+      });
 });
