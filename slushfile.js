@@ -13,6 +13,7 @@ var gulp = require('gulp'),
   conflict = require('gulp-conflict'),
   template = require('gulp-template'),
   rename = require('gulp-rename'),
+  filter = require('gulp-filter'),
   _ = require('underscore.string'),
   inquirer = require('inquirer'),
   path = require('path');
@@ -78,9 +79,11 @@ gulp.task('default', function (done) {
               return done();
           }
           answers.appNameSlug = _.slugify(answers.appName);
-
+          var ejs = filter(['**/**', '!**/**.ejs'], {restore: true});
           gulp.src(__dirname + '/templates/**',  {dot: true})
+            .pipe(ejs)
             .pipe(template(answers))
+            .pipe(ejs.restore)
             .pipe(rename(function (file) {
                 if (file.basename[0] === '_') {
                     file.basename = '.' + file.basename.slice(1);
