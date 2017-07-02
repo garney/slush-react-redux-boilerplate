@@ -5,10 +5,10 @@
 
 ## Getting Started
 
-Install `slush-slush-react-redux-boilerplate` globally:
+Install `slush-react-redux-boilerplate` globally:
 
 ```bash
-$ npm install -g slush-slush-react-redux-boilerplate
+$ npm install -g slush-react-redux-boilerplate
 ```
 
 ### Usage
