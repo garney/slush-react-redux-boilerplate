@@ -1,18 +1,18 @@
 {
   "name": "slush-react-redux-boilerplate",
   "description": "start a react redux application",
-  "version": "0.1.1",
-  "homepage": "https://github.com/garney/slush-slush-react-redux-boilerplate",
+  "version": "0.2.0",
+  "homepage": "https://github.com/garney/slush-react-redux-boilerplate",
   "author": {
     "name": "Garney Andres",
     "email": "garney@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/garney/slush-slush-react-redux-boilerplate.git"
+    "url": "git://github.com/garney/slush-react-redux-boilerplate.git"
   },
   "bugs": {
-    "url": "https://github.com/garney/slush-slush-react-redux-boilerplate/issues"
+    "url": "https://github.com/garney/slush-react-redux-boilerplate/issues"
   },
   "license": "MIT",
   "main": "slushfile.js",
