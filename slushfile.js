@@ -79,20 +79,24 @@ gulp.task('default', function (done) {
               return done();
           }
           answers.appNameSlug = _.slugify(answers.appName);
-          var ejs = filter(['**/**', '!**/**.ejs'], {restore: true});
-          gulp.src(__dirname + '/templates/**',  {dot: true})
-            .pipe(ejs)
+         gulp.src(__dirname + '/templates/**/**.ejs',  {dot: true})
+            .pipe(rename(function (file) {
+                if (file.basename[0] === '_') {
+                    file.basename = '.' + file.basename.slice(1);
+                }
+            }))
+            .pipe(gulp.dest('./'));
+          gulp.src([__dirname + '/templates/**', '!'+__dirname + '/templates/**/**.ejs'],  {dot: true})
             .pipe(template(answers))
             .pipe(rename(function (file) {
                 if (file.basename[0] === '_') {
                     file.basename = '.' + file.basename.slice(1);
                 }
             }))
-            .pipe(ejs.restore)
             .pipe(gulp.dest('./'))
             .pipe(install())
             .on('end', function () {
                 done();
-            });
+            });  
       });
 });
