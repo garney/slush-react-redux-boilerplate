@@ -1,7 +1,7 @@
 {
   "name": "slush-react-redux-boilerplate",
   "description": "start a react redux application",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/garney/slush-slush-react-redux-boilerplate",
   "author": {
     "name": "Garney Andres",

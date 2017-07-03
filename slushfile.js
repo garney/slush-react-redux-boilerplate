@@ -83,12 +83,12 @@ gulp.task('default', function (done) {
           gulp.src(__dirname + '/templates/**',  {dot: true})
             .pipe(ejs)
             .pipe(template(answers))
-            .pipe(ejs.restore)
             .pipe(rename(function (file) {
                 if (file.basename[0] === '_') {
                     file.basename = '.' + file.basename.slice(1);
                 }
             }))
+            .pipe(ejs.restore)
             .pipe(gulp.dest('./'))
             .pipe(install())
             .on('end', function () {
