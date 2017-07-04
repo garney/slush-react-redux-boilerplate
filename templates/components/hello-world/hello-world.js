@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import '../../styles/core.scss';
 import css from './hello-world.scss';
 import { changeName } from './hello-world-actions';
+
 const logo = require('../../assets/react_logo.png');
 
 @styleable(css)
