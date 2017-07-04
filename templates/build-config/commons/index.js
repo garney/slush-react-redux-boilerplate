@@ -8,4 +8,5 @@ exports.preloadersEslint = require('./preloaders-eslint');
 exports.loadersBabel = require('./loaders-babel');
 exports.loadersStyle = require('./loaders-style');
 exports.loadersJson = require('./loaders-json');
+exports.loadersImages = require('./loaders-images');
 exports.stylelintPlugin = require('./stylelint-plugin');

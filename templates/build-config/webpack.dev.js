@@ -27,7 +27,8 @@ module.exports = {
       commons.preloadersEslint(),
 			commons.loadersBabel(),
 			commons.loadersStyle(),
-			commons.loadersJson()
+			commons.loadersJson(),
+			commons.loadersImages('bundles/')
     ]
 	}
 }
