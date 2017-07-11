@@ -1,7 +1,7 @@
 {
   "name": "slush-react-redux-boilerplate",
   "description": "start a react redux application",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "homepage": "https://github.com/garney/slush-react-redux-boilerplate",
   "author": {
     "name": "Garney Andres",
@@ -36,6 +36,10 @@
     "underscore.string": "^2.3.3"
   },
   "keywords": [
-    "slushgenerator"
+    "slushgenerator",
+    "slush",
+    "react",
+    "redux",
+    "ES6"
   ]
 }
