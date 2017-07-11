@@ -86,7 +86,16 @@ gulp.task('default', function (done) {
                 }
             }))
             .pipe(gulp.dest('./'));
-          gulp.src([__dirname + '/templates/**', '!'+__dirname + '/templates/**/**.ejs'],  {dot: true})
+        gulp.src(__dirname + '/templates/**/**.png',  {dot: true})
+          .pipe(rename(function (file) {
+            if (file.basename[0] === '_') {
+              file.basename = '.' + file.basename.slice(1);
+            }
+          }))
+          .pipe(gulp.dest('./'));
+          gulp.src([__dirname + '/templates/**',
+            '!'+__dirname + '/templates/**/**.ejs',
+            '!'+__dirname + '/templates/**/**.png'],  {dot: true})
             .pipe(template(answers))
             .pipe(rename(function (file) {
                 if (file.basename[0] === '_') {
