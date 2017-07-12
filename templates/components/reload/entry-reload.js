@@ -7,8 +7,9 @@ import { createStore, applyMiddleware } from 'redux';
 import { handleDefaults } from '../helpers/utils';
 import ReloadCombinedReducers from './reload-combined-reducers';
 import Reload from './reload';
+import reduxPromise from 'redux-promise';
 
-const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
+const createStoreWithMiddleware = applyMiddleware(thunk, reduxPromise)(createStore);
 
 export default class EntryReload {
 	constructor(element, dynamicOptions) {
