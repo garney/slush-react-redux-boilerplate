@@ -2,17 +2,18 @@ import React, { Component } from 'react';
 import styleable from 'react-styleable';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import PropTypes from 'prop-types';
 import '../../styles/core.scss';
-import css from './hello-world.scss';
-import { changeName } from './hello-world-actions';
+import css from './delete-me.scss';
+import { deleteNow } from './delete-me-actions';
 
 const logo = require('../../assets/react_logo.png');
 
 @styleable(css)
-class HelloWorld extends Component {
+class DeleteMe extends Component {
   static propTypes= {
-    changeName: React.PropTypes.func,
-    helloWorldReducer: React.PropTypes.object
+    deleteNow: PropTypes.func,
+    deleteMe: PropTypes.string
   };
 
   componentWillUpdate() {}
@@ -20,24 +21,24 @@ class HelloWorld extends Component {
   render() {
     return (
       <div className={css.component} >
+        <h1>{this.props.deleteMe}</h1>
+        <button onClick={() => this.props.deleteNow()}>Delete</button>
         <img src={(logo)} alt="logo" />
-        <h1>Hello { this.props.helloWorldReducer.hello } </h1>
-        <input onChange={(e) => { this.props.changeName(e.target.value); }} placeholder="Change Name Here" />
       </div>
     );
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps({ deleteMe }) {
   return {
-    helloWorldReducer: state.helloWorldReducer
+    deleteMe
 	};
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    changeName
+    deleteNow
   }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(HelloWorld);
+export default connect(mapStateToProps, mapDispatchToProps)(DeleteMe);
