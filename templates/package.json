@@ -19,8 +19,9 @@
   },
   "keywords": [
     "node",
-    "heroku",
-    "express"
+    "react",
+    "express",
+    "redux"
   ],
   "author": "<%= authorName %>",
   "license": "ISC",
